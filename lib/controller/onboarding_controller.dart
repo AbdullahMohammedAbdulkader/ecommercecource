@@ -1,5 +1,6 @@
 import 'dart:ffi';
 
+import 'package:ecommercecource/core/services/services.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,13 +17,20 @@ class OnBoardingControllerImp extends OnBoardingController{
   late PageController pageController;
 
   int currentPage = 0;
+
+  MyServices myServices = Get.find();
+
   @override
   next() {
     currentPage++;
     if(currentPage > OnBoardingList.length - 1){
+      myServices.sharedPreferences.setString("onboarding", "1");
       Get.offAllNamed(AppRout.login);
     }else{
-      pageController.animateToPage(currentPage, duration:const Duration(microseconds: 600), curve:Curves.easeInOut);
+      pageController.animateToPage(currentPage,
+          duration:const Duration(microseconds: 600),
+          curve:Curves.easeInOut
+      );
     }
   }
 

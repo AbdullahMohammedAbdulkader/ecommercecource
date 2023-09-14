@@ -1,3 +1,7 @@
+// ignore_for_file: deprecated_member_use
+
+import 'package:ecommercecource/depandencies.dart';
+import 'package:ecommercecource/test.dart';
 import 'package:ecommercecource/view/screen/language.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -28,24 +32,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       locale: controller.language,
-      theme:  ThemeData(
-        fontFamily: "PlayFire",
-        textTheme: const TextTheme(
-          headline1:  TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-            color: AppColor.black),
-          bodyText1: TextStyle(
-              height: 2,
-              color: AppColor.gray,
-              fontWeight: FontWeight.bold,
-              fontSize: 17
-          )
-        ),
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: const Language(),
-      routes: routes,
+      theme: controller.appTheme,
+      initialBinding: MyBinding(),
+      //home: const Test(),
+      //routes: routes,
+      getPages: routes,
     );
   }
 }

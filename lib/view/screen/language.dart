@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -18,11 +20,11 @@ class Language extends GetView<LocalController> {
           children: [
             Text("1".tr ,style: Theme.of(context).textTheme.headline1),
             const SizedBox(height:20),
-            CustomButtonLang(textbutton: "Ar", onPressed: (){
+            CustomButtonLang(textbutton: "2".tr, onPressed: (){
               controller.changelang('ar');
               Get.toNamed(AppRout.onBoarding);
             }),
-            CustomButtonLang(textbutton: "En", onPressed: (){
+            CustomButtonLang(textbutton: "3".tr, onPressed: (){
               controller.changelang('en');
               Get.toNamed(AppRout.onBoarding);
             })
