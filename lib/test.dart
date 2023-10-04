@@ -1,8 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 
+import 'core/functions/checkinternet.dart';
+
 class Test extends StatelessWidget {
-  const Test({Key? key}) : super(key: key);
+  Test({Key? key}) : super(key: key);
+
+  var res ;
+
+  intialdata() async {
+    res = await CheckInternet();
+    print(res) ;
+  }
+
+  @override
+  void initState(){
+    intialdata() ;
+  }
 
   @override
   Widget build(BuildContext context) {

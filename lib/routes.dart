@@ -14,11 +14,11 @@ import 'core/constant/routes.dart';
 
 
 List<GetPage<dynamic>>? routes = [
-
-  //Auth
   GetPage(name: "/", page: () => const Language(), middlewares: [
     MyMiddleWare()
   ]),
+  //GetPage(name: "/", page: () =>  TestView()),
+
   GetPage(name: AppRout.login, page: () => const Login()),
   GetPage(name: AppRout.SignUp, page: () => const SignUp()),
   GetPage(name: AppRout.forgetPassword, page: () => const ForgetPassword()),
