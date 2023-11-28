@@ -1,22 +1,20 @@
 // ignore_for_file: deprecated_member_use
-import 'package:ecommercecource/controller/auth/forgetpassword_controller.dart';
+import 'package:ecommercecource/controller/forgetpassword/verifycode_controller.dart';
+import 'package:ecommercecource/core/class/handlingdataview.dart';
+import 'package:ecommercecource/view/widget/auth/customtextbodyauth.dart';
+import 'package:ecommercecource/view/widget/auth/customtitletextauth.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommercecource/core/constant/color.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:get/get.dart';
 
-import '../../../../controller/auth/verifycode_controller.dart';
-import '../../../widget/auth/custombuttonauth.dart';
-import '../../../widget/auth/customtextbodyauth.dart';
-import '../../../widget/auth/customtextformauth.dart';
-import '../../../widget/auth/customtitletextauth.dart';
 
 class VerifyCode extends StatelessWidget {
   const VerifyCode({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    VerifyCodeControllerImp controller = Get.put(VerifyCodeControllerImp());
+    Get.put(VerifyCodeControllerImp());
     return Scaffold(
       appBar:  AppBar(
         centerTitle: true,
@@ -25,7 +23,10 @@ class VerifyCode extends StatelessWidget {
         title: Text("Verification Code",
             style: Theme.of(context).textTheme.headline1!.copyWith(color: AppColor.gray)),
       ),
-      body:  Container(
+      body: GetBuilder<VerifyCodeControllerImp>(builder: (controller) =>
+          HandlingDataViewRequest(statusRequest:
+            controller.statusRequest,
+            widget:Container(
         padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
         child:   ListView(
             children:  [
@@ -50,11 +51,13 @@ class VerifyCode extends StatelessWidget {
                 },
                 //runs when every textfield is filled
                 onSubmit: (String verificationCode){
-                  controller.goToResetPassword();
+                  controller.goToResetPassword(verificationCode);
                 }, // end onSubmit
               ),
             ]),
       ),
+          )
+      )
     );
   }
 }

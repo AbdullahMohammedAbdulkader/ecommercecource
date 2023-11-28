@@ -9,5 +9,11 @@ class AppRout {
   static const String SuccessResetPassword = "/successresetpassword";
   static const String checkemail = "/checkemail";
   static const String verifyCodeSignUp = "/verifycodesignup";
+  static const String homepage = "/homepage";
+  static const String items = "/items";
+  static const String productdetails = "/productdetails";
+  static const String myfavorite = "/myfavorite" ;
+
+
 
 }

@@ -32,7 +32,11 @@ class SuccessSignUp extends StatelessWidget {
                    Icons.check_circle_outline,
                    size: 200,
                    color: AppColor.primarycolor)),
-           const Text("...."),
+           const Text("Congratulations", style: TextStyle(
+             fontSize: 30,
+             color: AppColor.black, fontWeight: FontWeight.bold)
+           ),
+           const Text("successfully registered"),
            const Spacer(),
            Container(
              width: double.infinity,

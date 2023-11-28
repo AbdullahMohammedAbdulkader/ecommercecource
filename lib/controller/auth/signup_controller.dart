@@ -21,15 +21,18 @@ class SignUpControllerImp extends SignUpController{
 
   SignupData signupData = SignupData(Get.find()) ;
   List data = [] ;
-  late StatusRequest statusRequest ;
+  StatusRequest statusRequest = StatusRequest.none;
 
   @override
   signUp() async {
-    //var formdata = formstate.currentState ;
     if(formstate.currentState!.validate()) {
-
       statusRequest = StatusRequest.loading;
-      var response = await signupData.postdata(username.text, email.text , phone.text , password.text);
+      update() ;
+      Get.offNamed(AppRout.verifyCodeSignUp ,arguments: {
+        "email" : email.text
+      });
+      var response = await signupData.postdata(
+          username.text, email.text , phone.text , password.text);
       print("=========================== controller $response") ;
       statusRequest = hindlingData(response) ;
       if(StatusRequest.success == statusRequest ){
@@ -47,7 +50,9 @@ class SignUpControllerImp extends SignUpController{
 
   @override
   goToSignIn() {
-    Get.offNamed(AppRout.login);
+    //Get.offNamed(AppRout.login);
+    Get.offNamed(AppRout.verifyCodeSignUp);
+
   }
 
   @override

@@ -1,4 +1,7 @@
 // ignore_for_file: deprecated_member_use
+import 'package:ecommercecource/core/class/handlingdataview.dart';
+import 'package:ecommercecource/core/class/statusrequest.dart';
+import 'package:ecommercecource/core/functions/translatedatabase.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommercecource/core/constant/color.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
@@ -13,7 +16,7 @@ class VerifyCodeSignUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    VerifyCodeSignUpControllerImp controller = Get.put(VerifyCodeSignUpControllerImp());
+    Get.put(VerifyCodeSignUpControllerImp());
     return Scaffold(
       appBar:  AppBar(
         centerTitle: true,
@@ -22,16 +25,20 @@ class VerifyCodeSignUp extends StatelessWidget {
         title: Text("Verification Code",
             style: Theme.of(context).textTheme.headline1!.copyWith(color: AppColor.gray)),
       ),
-      body:  Container(
-        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
-        child:   ListView(
+      body:  GetBuilder<VerifyCodeSignUpControllerImp>(
+        builder: (controller) =>
+            HandlingDataViewRequest(statusRequest:
+              controller.statusRequest,
+              widget:  Container(
+          padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+          child:   ListView(
             children:  [
               const CustomTitleTextAuth(
                 text: "Check Code",
               ),
               const SizedBox(height: 10),
-              const CustomTextBodyAuth(
-                text: "Please Enter The Digit Code Sent To Abdu@gmail.com",
+              CustomTextBodyAuth(
+                text: "Please Enter The Digit Code Sent To ${controller.email}",
               ),
               SizedBox(height:45),
               OtpTextField(
@@ -47,11 +54,26 @@ class VerifyCodeSignUp extends StatelessWidget {
                 },
                 //runs when every textfield is filled
                 onSubmit: (String verificationCode){
-                  controller.goToSuccessSignUp();
+                  controller.goToSuccessSignUp(verificationCode);
                 }, // end onSubmit
               ),
+              const SizedBox(height: 40),
+              InkWell(
+                onTap: (){
+                  controller.reSend() ;
+                },
+                child:  Center(
+                  child:  Text("${translateDatabase('Resend Verify Code', 'اعادة ارسال الرمز')}", style: const TextStyle(
+                    color: AppColor.primarycolor,
+                    fontSize: 20,
+                  )),
+                ),
+
+              )
             ]),
       ),
+            )
+      )
     );
   }
 }

@@ -6,6 +6,7 @@
   static const String onBoardingImageTow   = "$rootImage/Capture2.PNG";
   static const String onBoardingImageThree = "$rootImage/Capture3.PNG";
   static const String onBoardingImageFour  = "$rootImage/Capture4.PNG";
+  static const String avatar               = "$rootImage/avatar.png";
   static const String logoauth             = "$rootImage/2.png";
   static const String loading              = "$rootLottie/loading.json";
   static const String nodata               = "$rootLottie/nodata.json";

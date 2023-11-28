@@ -1,5 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
+import 'package:ecommercecource/core/class/handlingdataview.dart';
+import 'package:ecommercecource/core/class/statusrequest.dart';
 import 'package:ecommercecource/core/constant/color.dart';
 import 'package:ecommercecource/core/functions/validinput.dart';
 import 'package:ecommercecource/view/widget/auth/textsignup.dart';
@@ -17,7 +19,7 @@ class SignUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.lazyPut(() => SignUpControllerImp()) ;
+    Get.put(SignUpControllerImp()) ;
     return Scaffold(
       appBar:  AppBar(
         centerTitle: true,
@@ -28,7 +30,10 @@ class SignUp extends StatelessWidget {
          body: WillPopScope(
            onWillPop: alertExitApp,
            child:  GetBuilder<SignUpControllerImp>(
-             builder: (controller) => Container(
+             builder: (controller) =>
+                 HandlingDataViewRequest(statusRequest:
+                 controller.statusRequest,
+                 widget:  Container(
                  padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
                  child: Form(
                    key: controller.formstate ,
@@ -105,6 +110,7 @@ class SignUp extends StatelessWidget {
                  )
 
              ),
+                 )
            ),
          )
 
