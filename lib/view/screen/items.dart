@@ -3,9 +3,11 @@ import 'package:ecommercecource/controller/favorite_controller.dart';
 import 'package:ecommercecource/controller/items_controller.dart';
 import 'package:ecommercecource/core/class/handlingdataview.dart';
 import 'package:ecommercecource/core/constant/color.dart';
+import 'package:ecommercecource/core/constant/routes.dart';
 import 'package:ecommercecource/core/functions/translatedatabase.dart';
 import 'package:ecommercecource/data/model/itemsmodel.dart';
 import 'package:ecommercecource/linkapi.dart';
+import 'package:ecommercecource/view/screen/home.dart';
 import 'package:ecommercecource/view/widget/customappbar.dart';
 import 'package:ecommercecource/view/widget/items/customlistitems.dart';
 import 'package:ecommercecource/view/widget/items/listcategoriesitems.dart';
@@ -17,7 +19,7 @@ class Items extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(ItemsControllerImp()) ;
+    ItemsControllerImp controller = Get.put(ItemsControllerImp()) ;
     FavoriteController controllerFav = Get.put(FavoriteController()) ;
     return Scaffold(
       body: Container(
@@ -25,11 +27,17 @@ class Items extends StatelessWidget {
         child:  ListView(
                   children: [
                     CustomAppBar(
-                      titleappbar: translateDatabase('بحث عن منتج', 'Search Product'),
+                      myController: controller.search!,
+                      onChanged: (val) {
+                        controller.checkSearch(val) ;
+                      },
+                      titleappbar: translateDatabase("بحث عن المنتج", 'Search Product'),
                       //onPressedIcon: (){},
-                      onPressedSearch: (){},
+                      onPressedSearch: (){
+                        controller.onSearchItems() ;
+                      },
                       onPressedFavorite: (){
-
+                        Get.toNamed(AppRout.myfavorite) ;
                       },
                     ),
                     const SizedBox(height: 20) ,
@@ -37,7 +45,7 @@ class Items extends StatelessWidget {
                     GetBuilder<ItemsControllerImp>(builder: (controller) =>
                         HandlingDataView(
                             statusRequest: controller.statusRequest,
-                            widget: GridView.builder(
+                            widget: !controller.isSearch ? GridView.builder(
                                 shrinkWrap: true,
                                 physics: const NeverScrollableScrollPhysics(),
                                 itemCount: controller.data.length,
@@ -48,7 +56,7 @@ class Items extends StatelessWidget {
                                       itemsModel: ItemsModel.fromJson(controller.data[index])
                                   );
                                 }
-                            )
+                            ) : ListItemsSearch(listdatamodel: controller.listdata),
                         )
                     )
                   ],

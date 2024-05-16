@@ -5,6 +5,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommercecource/controller/productdetails_controller.dart';
 import 'package:ecommercecource/core/class/handlingdataview.dart';
 import 'package:ecommercecource/core/constant/color.dart';
+import 'package:ecommercecource/core/constant/routes.dart';
 import 'package:ecommercecource/core/functions/translatedatabase.dart';
 import 'package:ecommercecource/linkapi.dart';
 import 'package:ecommercecource/view/widget/productdetails/priceandquantity.dart';
@@ -27,9 +28,9 @@ class ProductDetails extends StatelessWidget {
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           color: AppColor.secoundcolor,
           onPressed: (){
-
+            Get.toNamed(AppRout.cart) ;
           },
-          child: Text(translateDatabase("اضافة للسلة", "Add To Card"),
+          child: Text(translateDatabase("اذهب لسلة الشراء", "Go To Cart"),
           style: const TextStyle(
             color: AppColor.white,
             fontSize: 18,
@@ -63,7 +64,7 @@ class ProductDetails extends StatelessWidget {
                                 controller.remove() ;
                               },
                               quantity: "${controller.countitems}",
-                              price: '${controller.itemsModel.itemsPrice}') ,
+                              price: '${controller.itemsModel.itemsPriceDiscount}') ,
                           const SizedBox(height: 10),
                           Text("${translateDatabase(controller.itemsModel.itemsDescAr, controller.itemsModel.itemsDesc)} ${translateDatabase(controller.itemsModel.itemsDescAr, controller.itemsModel.itemsDesc)} ${translateDatabase(controller.itemsModel.itemsDescAr, controller.itemsModel.itemsDesc)}",
                               style: Theme.of(context).textTheme.bodyText1!),

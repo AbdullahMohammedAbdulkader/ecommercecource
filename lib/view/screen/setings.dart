@@ -1,6 +1,7 @@
 import 'package:ecommercecource/controller/settings_controller.dart';
 import 'package:ecommercecource/core/constant/color.dart';
 import 'package:ecommercecource/core/constant/imageassets.dart';
+import 'package:ecommercecource/core/constant/routes.dart';
 import 'package:ecommercecource/core/functions/translatedatabase.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -52,7 +53,23 @@ class Setings extends StatelessWidget {
                     trailing: Switch(onChanged: (val){}, value: true),
                   ),
                   ListTile(
-                    onTap: (){},
+                    onTap: (){
+                      Get.toNamed(AppRout.ordersPending) ;
+                    },
+                    title: Text(translateDatabase("الطلبات", "Orders")),
+                    trailing: Icon(Icons.card_travel_outlined),
+                  ),
+                  ListTile(
+                    onTap: (){
+                      Get.toNamed(AppRout.addressView) ;
+                    },
+                    title: Text(translateDatabase("أرشفة", "Archive")),
+                    trailing: Icon(Icons.archive_outlined),
+                  ),
+                  ListTile(
+                    onTap: (){
+                      Get.toNamed(AppRout.addressView) ;
+                    },
                     title: Text(translateDatabase("العنوان", "Address")),
                     trailing: Icon(Icons.location_on_outlined),
                   ),

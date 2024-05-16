@@ -1,9 +1,11 @@
 
+import 'package:ecommercecource/controller/home_controller.dart';
 import 'package:ecommercecource/core/class/statusrequest.dart';
 import 'package:ecommercecource/core/functions/hindlingdatacontroller.dart';
 import 'package:ecommercecource/core/services/services.dart';
 import 'package:ecommercecource/data/datasorce/remote/items_data.dart';
 import 'package:ecommercecource/data/model/itemsmodel.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 abstract class ItemsController extends GetxController {
@@ -13,7 +15,7 @@ abstract class ItemsController extends GetxController {
   goToPageProductDetails(ItemsModel itemsModel) ;
 }
 
- class ItemsControllerImp extends ItemsController {
+ class ItemsControllerImp extends SearchMixController {
    List categories = [];
 
    int? selsectedCat;
@@ -30,6 +32,7 @@ abstract class ItemsController extends GetxController {
 
    @override
    void onInit() {
+     search = TextEditingController() ;
      intialData();
      super.onInit();
    }

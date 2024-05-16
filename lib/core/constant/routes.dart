@@ -13,6 +13,14 @@ class AppRout {
   static const String items = "/items";
   static const String productdetails = "/productdetails";
   static const String myfavorite = "/myfavorite" ;
+  static const String cart       = "/cart" ;
+  static const String addressView       = "/addressView" ;
+  static const String addressAdd       = "/addressAdd" ;
+  static const String addressaddDetails       = "/addressaddDetails" ;
+  //static const String deleteAddress       = "/addressAddDetails" ;
+  //static const String editAddress       = "/addressAddDetails" ;
+  static const String checkOut       = "/checkOut" ;
+  static const String ordersPending        = "/ordersPending" ;
 
 
 

@@ -1,4 +1,8 @@
 import 'package:ecommercecource/core/middleware/mymiddleware.dart';
+import 'package:ecommercecource/view/address/add..dart';
+import 'package:ecommercecource/view/address/adddetails.dart';
+import 'package:ecommercecource/view/address/view.dart';
+import 'package:ecommercecource/view/screen/checkout.dart';
 import 'package:ecommercecource/view/screen/auth/forgetpassword/forgetpassword.dart';
 import 'package:ecommercecource/view/screen/auth/login.dart';
 import 'package:ecommercecource/view/screen/auth/forgetpassword/resetpassword.dart';
@@ -13,6 +17,7 @@ import 'package:ecommercecource/view/screen/items.dart';
 import 'package:ecommercecource/view/screen/language.dart';
 import 'package:ecommercecource/view/screen/myfavorite.dart';
 import 'package:ecommercecource/view/screen/onboarding.dart';
+import 'package:ecommercecource/view/screen/orders/pending.dart';
 import 'package:ecommercecource/view/screen/productdetails.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'core/constant/routes.dart';
@@ -20,7 +25,11 @@ import 'core/constant/routes.dart';
 
 List<GetPage<dynamic>>? routes = [
   GetPage(name: "/", page: () => const Language(), middlewares: [MyMiddleWare()]),
-  //GetPage(name: "/", page: () =>  const Cart()),
+
+  //cart
+  GetPage(name: AppRout.cart, page: () =>  const Cart()),
+
+  //auth
   GetPage(name: AppRout.login, page: () => const Login()),
   GetPage(name: AppRout.SignUp, page: () => const SignUp()),
   GetPage(name: AppRout.forgetPassword, page: () => const ForgetPassword()),
@@ -41,8 +50,21 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRout.productdetails, page: () => const ProductDetails()) ,
 
   //favorite
-
   GetPage(name: AppRout.myfavorite, page: () => const MyFavorite()),
 
+
+  //GetPage(name: AppRout.cart, page: () => const Cart()),
+
+
+  //Address
+  GetPage(name: AppRout.addressAdd, page: () => const AddressAdd()),
+  GetPage(name: AppRout.addressView, page: () => const AddressView()),
+  //GetPage(name: AppRout.deleteAddress, page: () => const AddressView()),
+  //GetPage(name: AppRout.editAddress, page: () => const AddressView()),
+  GetPage(name: AppRout.addressaddDetails, page: () => const AddressDetails()),
+
+  //Checkout
+  GetPage(name: AppRout.checkOut, page: () => const CheckOut()),
+  GetPage(name: AppRout.ordersPending, page: () => const OrdersPending()),
 
 ];

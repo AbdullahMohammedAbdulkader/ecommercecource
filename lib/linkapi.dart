@@ -1,8 +1,8 @@
 class AppLink {
- static const String server = "http://192.168.1.104/ecommerce" ;
+ static const String server = "http://192.168.1.105/ecommerce" ;
  //static const String server = "http://192.168.100.24/ecommerce" ;
 
- static const String imagestatic = "http://192.168.1.104/ecommerce/upload" ;
+ static const String imagestatic = "http://192.168.1.105/ecommerce/upload" ;
  //static const String imagestatic = "http://192.168.100.24/ecommerce/upload" ;
 
  //=================================== Image ====================
@@ -31,6 +31,7 @@ class AppLink {
 
 //============================ items =========================================//
  static const String items = "$server/items/items.php" ;
+ static const String searchItems = "$server/items/search.php" ;
 
  //=========================== favorite ========================================//
  static const String favoriteAdd    = "$server/favorite/add.php" ;
@@ -45,6 +46,24 @@ class AppLink {
  static const String cartAdd           = "$server/cart/add.php" ;
  static const String cartDelete        = "$server/cart/delete.php" ;
  static const String cartgetcountitems = "$server/cart/getcountitems.php" ;
+
+ //============================= address =========================================//
+
+ static const String addressView          = "$server/address/view.php" ;
+ static const String addressAdd           = "$server/address/add.php" ;
+ static const String addressDelete        = "$server/address/delete.php" ;
+ static const String addressEdit          = "$server/address/edit.php" ;
+
+ //============================ Coupon ===========================================//
+
+ static const String CheckCoupon = "$server/coupon/checkcoupon.php" ;
+
+//============================ CheckOut ===========================================//
+
+static const String checkOut = "$server/orders/checkout.php" ;
+static const String pendingOrders = "$server/orders/pending.php" ;
+static const String archiveOrders = "$server/orders/archive.php" ;
+
 
 
 }

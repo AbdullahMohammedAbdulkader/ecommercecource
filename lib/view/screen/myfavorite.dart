@@ -18,7 +18,7 @@ class MyFavorite extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 10),
         child: GetBuilder<MyFavoriteController>(builder: (controller) => ListView(
           children: [
-            CustomAppBar(
+            /* CustomAppBar(
               titleappbar: translateDatabase("بحث عن المنتج", 'Search Product'),
               //onPressedIcon: (){},
               onPressedSearch: (){},
@@ -26,6 +26,8 @@ class MyFavorite extends StatelessWidget {
                 Get.toNamed(AppRout.myfavorite) ;
               },
             ),
+
+             */
             const SizedBox(height: 20),
             HandlingDataView(
                 statusRequest: controller.statusRequest, 

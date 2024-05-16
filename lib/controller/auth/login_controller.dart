@@ -3,7 +3,6 @@ import 'package:ecommercecource/core/constant/routes.dart';
 import 'package:ecommercecource/core/functions/hindlingdatacontroller.dart';
 import 'package:ecommercecource/core/services/services.dart';
 import 'package:ecommercecource/data/datasorce/remote/auth/login.dart';
-import 'package:ecommercecource/view/screen/home.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -47,10 +46,15 @@ class LoginControllerImp extends LoginController{
 
           if (response['data']['users_approve'] == "1"){
             myServices.sharedPreferences.setString("id", response['data']['users_id']) ;
+            String userid = myServices.sharedPreferences.getString("id")!;
             myServices.sharedPreferences.setString("username", response['data']['users_name']) ;
             myServices.sharedPreferences.setString("email", response['data']['users_email']) ;
             myServices.sharedPreferences.setString("phone", response['data']['users_phone']) ;
             myServices.sharedPreferences.setString("step", "2") ;
+            // FirebaseMessaging.instance.subscribeToTopic("users") ;
+            // FirebaseMessaging.instance.subscribeToTopic("users${userid}") ;
+
+
             Get.offNamed(AppRout.homepage);
 
           } else {
